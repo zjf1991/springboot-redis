@@ -1,0 +1,107 @@
+
+spring:
+      application:
+          name: dept
+      mvc:
+       static-path-pattern: /**
+       resources: # \u6307\u5B9A\u9759\u6001\u8D44\u6E90\u7684\u8DEF\u5F84
+               static-locations: classpath:/static/,classpath:/views/,file:${webServerConfig.uploadFileLocation}
+       view:
+         prefix: /WEB-INF/view
+      http:
+       converters:
+         preferred-json-mapper: fastjson
+       multipart:
+         max-request-size: 100MB #\u6700\u5927\u8BF7\u6C42\u5927\u5C0F
+         max-file-size: 100MB #\u6700\u5927\u6587\u4EF6\u5927\u5C0F
+      devtools:
+       restart:
+         enabled: false #\u662F\u5426\u5F00\u542F\u5F00\u53D1\u8005\u5DE5\u5177\uFF08true/false\uFF09
+         additional-paths: src/main/java
+         exclude: static/**,WEB-INF/view/**
+      aop:
+       proxy-target-class: true #false\u4E3A\u542F\u7528jdk\u9ED8\u8BA4\u52A8\u6001\u4EE3\u7406,true\u4E3Acglib\u52A8\u6001\u4EE3\u7406
+      jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd HH:mm:ss
+      datasource:
+         name: smartapartment
+         url: jdbc:mysql://localhost:3306/guns?useUnicode=true&characterEncoding=utf8
+         username: root
+         password: root
+         type: com.alibaba.druid.pool.DruidDataSource
+         driver-class-name: com.mysql.jdbc.Driver
+         filters: stat
+         maxActive: 20
+         initialSize: 1
+         maxWait: 60000
+         minIdle: 1
+         timeBetweenEvictionRunsMillis: 60000
+         minEvictableIdleTimeMillis: 300000
+         validationQuery: select 'x'
+         testWhileIdle: true
+         testOnBorrow: false
+         testOnReturn: false
+         poolPreparedStatements: true
+         maxOpenPreparedStatements: 20
+
+      redis:
+          host: 192.168.254.128
+          port: 6379
+          password:
+          timeout: 1000
+          database: 1
+          pool:
+            max-active: 10
+            max-idle: 8
+            min-idle: 2
+            max-wait: 100
+      #redis集群配置
+      #redis:
+          #nodes: 10.200.200.2:7011,10.200.200.2:7012,10.200.200.2:7013,10.200.200.2:7014,10.200.200.2:7015,10.200.200.2:7016
+          #commandTimeout: 10000  #redis操作的超时时间
+          #maxTotal: 5000 #最大连接数
+          #maxIdle: 30 #最大空闲连接数
+          #minIdle: 5 #最小空闲连接数
+          #maxWait: 3000  #获取连接最大等待时间 ms  #default -1
+          #pwd:
+
+
+#mybaits-plus\u914D\u7F6E\uFF0C\u4FEE\u6539\u4E3B\u952E\u7C7B\u578B\uFF0Cmapper.xml\u3001type \u522B\u540D\u7B49
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*Mapper.xml
+  typeAliasesPackage: com.yzj.springbootredis.entity
+  global-config:
+    #\u4E3B\u952E\u7C7B\u578B  0:"\u6570\u636E\u5E93ID\u81EA\u589E", 1:"\u7528\u6237\u8F93\u5165ID",2:"\u5168\u5C40\u552F\u4E00ID (\u6570\u5B57\u7C7B\u578B\u552F\u4E00ID)", 3:"\u5168\u5C40\u552F\u4E00ID UUID";
+    id-type: 3
+    #\u5B57\u6BB5\u7B56\u7565 0:"\u5FFD\u7565\u5224\u65AD",1:"\u975E NULL \u5224\u65AD"),2:"\u975E\u7A7A\u5224\u65AD"
+    field-strategy: 1
+    #\u9A7C\u5CF0\u4E0B\u5212\u7EBF\u8F6C\u6362
+    db-column-underline: true
+    #\u5237\u65B0mapper \u8C03\u8BD5\u795E\u5668
+    refresh-mapper: true
+    #\u6570\u636E\u5E93\u5927\u5199\u4E0B\u5212\u7EBF\u8F6C\u6362
+    capital-mode: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: true
+
+#logging
+logging:
+  level: warn
+
+
+webServerConfig:
+  staticFileLocation : file:F:\tfs\\u6E90\u81EA\u5BB6\Sources\Web\src\
+  #staticFileLocation : classpath:/hsstatic/
+  #staticFileLocation : file:/mnt/SmartApartment/web/html/
+  #uploadFileLocation : D:/WebSite/yzj/web/
+  uploadFileLocation : /mnt/yzjbusiness/uploadfile/
+
+
+server:
+  port: 8772
+
+web:
+  bashbha
+
