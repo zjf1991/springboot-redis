@@ -26,9 +26,9 @@ spring:
         date-format: yyyy-MM-dd HH:mm:ss
       datasource:
          name: smartapartment
-         url: jdbc:mysql://localhost:3306/guns?useUnicode=true&characterEncoding=utf8
-         username: root
-         password: root
+         url: jdbc:mysql://www.huasharp.com:3306/gunsdemo?useUnicode=true&characterEncoding=utf8
+         username: smartapartment
+         password: yzj*8432483
          type: com.alibaba.druid.pool.DruidDataSource
          driver-class-name: com.mysql.jdbc.Driver
          filters: stat

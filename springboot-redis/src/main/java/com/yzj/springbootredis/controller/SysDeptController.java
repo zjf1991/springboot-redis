@@ -61,6 +61,9 @@ public class SysDeptController {
 
         // 放入缓存，并设置缓存时间
         List<SysDept> re=  (List<SysDept>)redisUtils.getObject(key);
+
+        System.out.println("");
+
         System.out.println(re);
         return re;
     }
